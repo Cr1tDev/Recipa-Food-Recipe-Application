@@ -3,39 +3,47 @@ import heroLazyImg from 'url:../../assets/hero-lazy.webp';
 import beccaImg from 'url:../../assets/about-background.webp';
 import beccaLazyImg from 'url:../../assets/about-background-lazy.webp';
 
-// Simple helper to safely set image sources
-function safeSetImage(selector, lazySrc, dataSrc) {
-  const el = document.querySelector(selector);
-  if (!el) return; // stop if element doesn't exist
-  el.src = lazySrc;
-  el.dataset.src = dataSrc;
+/* Assign lazy + real images */
+function setLazyImage(selector, placeholderSrc, finalSrc) {
+  const img = document.querySelector(selector);
+  if (!img) return;
+
+  img.src = placeholderSrc; // Low-res placeholder
+  img.dataset.src = finalSrc; // High-res image for lazy loading
 }
 
-// Apply safely (only if elements exist)
-safeSetImage('.hero-img', heroLazyImg, heroImg);
-safeSetImage('.about-img', beccaLazyImg, beccaImg);
+/* Assign images (safe even if element missing) */
+setLazyImage('.hero-img', heroLazyImg, heroImg);
+setLazyImage('.about-img', beccaLazyImg, beccaImg);
 
-const imgTarget = document.querySelectorAll('img[data-src]');
+/* Lazy Loading Logic using IntersectionObserver */
+const imagesToLoad = document.querySelectorAll('img[data-src]');
 
-const loadingImg = function (entries, observer) {
-  const [entry] = entries;
+function onImageIntersect(entries, observer) {
+  const entry = entries[0];
 
+  // If image is not in the viewport yet → stop
   if (!entry.isIntersecting) return;
 
-  // Replace src with data-src
-  entry.target.src = entry.target.dataset.src;
+  const img = entry.target;
 
-  entry.target.addEventListener('load', function () {
-    entry.target.classList.add('loaded');
+  // Swap low-res → high-res
+  img.src = img.dataset.src;
+
+  // Add loaded class AFTER full load
+  img.addEventListener('load', () => {
+    img.classList.add('loaded');
   });
 
-  observer.unobserve(entry.target);
-};
+  // Stop observing once loaded
+  observer.unobserve(img);
+}
 
-const imgObserver = new IntersectionObserver(loadingImg, {
+const imageObserver = new IntersectionObserver(onImageIntersect, {
   root: null,
   threshold: 0,
-  rootMargin: '200px',
+  rootMargin: '200px', // 200px before the image enters screen
 });
 
-imgTarget.forEach(img => imgObserver.observe(img));
+// Attach observer to each image
+imagesToLoad.forEach(img => imageObserver.observe(img));
