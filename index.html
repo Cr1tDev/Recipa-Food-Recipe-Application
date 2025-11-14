@@ -279,6 +279,299 @@
           </div>
         </div>
       </section>
+      <!-- App Donwload -->
+      <section class="download">
+        <div class="container-wrapper">
+          <div class="download-container">
+            <div class="download-content">
+              <custom-tag
+                tagname="Download app"
+                position="right"
+                color="green"
+              ></custom-tag>
+              <h2 class="download-header">
+                Get it on your iPhone or Android and dive into a world of
+                culinary adventures, anytime, anywhere.
+              </h2>
+              <div class="donwload-buttons">
+                <a href="#" class="app-download__link">
+                  <img
+                    src="./src/assets/apple-store-badge.png"
+                    alt="Download on the App Store"
+                    width="132"
+                    height="auto"
+                  />
+                </a>
+                <a href="#" class="app-download__link">
+                  <img
+                    src="./src/assets/google-play-badge.png"
+                    alt="Get it on Google Play"
+                    width="148.5"
+                    height="auto"
+                  />
+                </a>
+              </div>
+            </div>
+            <div class="download-figure">
+              <img
+                src="./src/assets/mobile_mockup.jpg"
+                alt="Mobile app"
+                class="download-img"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Instagram -->
+      <section class="instagram">
+        <div class="container-wrapper">
+          <div class="instagram-container">
+            <div class="instagram-label">
+              <img
+                class="instagram-feed__icon"
+                src="./src/assets/instagram-icon.png"
+                alt="Instagram Icon"
+              />
+              <span class="instagram-feed__title">Instagram</span>
+            </div>
+            <!-- Insert content dynamicly -->
+            <div class="instagram-feed"></div>
+          </div>
+        </div>
+      </section>
+      <!-- Footer -->
+      <footer>
+        <div class="container-wrapper">
+          <div class="footer-container">
+            <!-- Footer Brand & Newsletter -->
+            <div class="footer-brand">
+              <a
+                href="/"
+                class="footer__logo--link"
+                aria-label="Recipee homepage"
+              >
+                <img
+                  class="footer__logo"
+                  src="./src/assets/recipa_logo.png"
+                  alt="Recipee Logo"
+                />
+              </a>
+
+              <p class="footer__description">
+                Join me on a gastronomic adventure filled with nutritious and
+                delicious recipes.
+              </p>
+
+              <!-- Newsletter -->
+              <div class="footer__newsletter">
+                <h3 class="footer__title">Sign up for our newsletter</h3>
+
+                <div class="subscribe-form">
+                  <form
+                    id="subscribe-form"
+                    name="subscribe-form"
+                    method="get"
+                    class="subscribe-form__form"
+                    aria-label="Subscribe"
+                  >
+                    <input
+                      class="subscribe-form__input"
+                      maxlength="256"
+                      name="email"
+                      placeholder="Enter your email..."
+                      type="email"
+                      id="subscribe-form-email"
+                      required
+                    />
+                    <div class="subscribe-form__button-wrapper">
+                      <input
+                        type="submit"
+                        value=""
+                        class="subscribe-form__button"
+                        data-wait="Please wait..."
+                      />
+                    </div>
+                  </form>
+                </div>
+
+                <p class="footer__copyright">© This is powered by Recipee</p>
+              </div>
+            </div>
+
+            <!-- Footer Navigation -->
+            <nav class="footer__nav">
+              <div class="footer__nav--column">
+                <h3 class="footer__title">Navigation</h3>
+                <ul class="footer__nav--list">
+                  <li class="footer__nav--item">
+                    <a href="/" class="footer__link" data-link>Home</a>
+                  </li>
+                  <li class="footer__nav-item">
+                    <a href="/about-me" class="footer__link" data-link
+                      >About me</a
+                    >
+                  </li>
+                  <li class="footer__nav-item">
+                    <a href="/shop" class="footer__link" data-link>Shop</a>
+                  </li>
+                  <li class="footer__nav-item">
+                    <a href="/recipe" class="footer__link" data-link>Recipes</a>
+                  </li>
+                  <li class="footer__nav-item">
+                    <a href="/style-guide" class="footer__link" data-link
+                      >Style Guide</a
+                    >
+                  </li>
+                  <li class="footer__nav-item">
+                    <a href="/licensing" class="footer__link" data-link
+                      >Licensing</a
+                    >
+                  </li>
+                  <li class="footer__nav-item">
+                    <a href="/legal" class="footer__link" data-link>Legal</a>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="footer__nav-column">
+                <h3 class="footer__title">Categories</h3>
+                <ul class="footer__nav--list">
+                  <li class="footer__nav-item">
+                    <a
+                      href="/recipe-categories/dessert"
+                      class="footer__link footer__link--icon"
+                    >
+                      <img
+                        class="footer__link-icon"
+                        src="./src/assets/cake-icon.png"
+                        alt="Cake icon"
+                      />
+                      <span>Dessert</span>
+                    </a>
+                  </li>
+                  <li class="footer__nav-item">
+                    <a
+                      href="/recipe-categories/drink"
+                      class="footer__link footer__link--icon"
+                    >
+                      <img
+                        class="footer__link-icon"
+                        src="./src/assets/drink-icon.png"
+                        alt="Drink icon"
+                      />
+                      <span>Drink</span>
+                    </a>
+                  </li>
+                  <li class="footer__nav-item">
+                    <a
+                      href="/recipe-categories/lunch"
+                      class="footer__link footer__link--icon"
+                    >
+                      <img
+                        class="footer__link-icon"
+                        src="./src/assets/pizza-icon.png"
+                        alt="Pizza icon"
+                      />
+                      <span>Lunch</span>
+                    </a>
+                  </li>
+                  <li class="footer__nav-item">
+                    <a
+                      href="/recipe-categories/breakfast"
+                      class="footer__link footer__link--icon"
+                    >
+                      <img
+                        class="footer__link-icon"
+                        src="./src/assets/bread-icon.png"
+                        alt="Bread icon"
+                      />
+                      <span>Breakfast</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="footer__nav-column">
+                <h3 class="footer__title">Follow me</h3>
+                <ul class="footer__social">
+                  <li class="footer__social-item">
+                    <a
+                      href="https://twitter.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="footer__social-link"
+                      aria-label="Follow us on Twitter"
+                    >
+                      <img
+                        class="footer__social-icon"
+                        src="https://cdn.prod.website-files.com/6501c88eb0eaccde56b0c083/6501c88eb0eaccde56b0c14b_x-logo.png"
+                        alt="Twitter"
+                        width="22"
+                        height="22"
+                        loading="lazy"
+                      />
+                    </a>
+                  </li>
+                  <li class="footer__social-item">
+                    <a
+                      href="https://facebook.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="footer__social-link"
+                      aria-label="Follow us on Facebook"
+                    >
+                      <img
+                        class="footer__social-icon"
+                        src="https://cdn.prod.website-files.com/6501c88eb0eaccde56b0c083/6501c88eb0eaccde56b0c149_icons8-facebook-240%20(1).png"
+                        alt="Facebook"
+                        width="22"
+                        height="22"
+                        loading="lazy"
+                      />
+                    </a>
+                  </li>
+                  <li class="footer__social-item">
+                    <a
+                      href="https://instagram.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="footer__social-link"
+                      aria-label="Follow us on Instagram"
+                    >
+                      <img
+                        class="footer__social-icon"
+                        src="https://cdn.prod.website-files.com/6501c88eb0eaccde56b0c083/6501c88eb0eaccde56b0c157_social-4.png"
+                        alt="Instagram"
+                        width="22"
+                        height="22"
+                        loading="lazy"
+                      />
+                    </a>
+                  </li>
+                  <li class="footer__social-item">
+                    <a
+                      href="https://youtube.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="footer__social-link"
+                      aria-label="Follow us on YouTube"
+                    >
+                      <img
+                        class="footer__social-icon"
+                        src="https://cdn.prod.website-files.com/6501c88eb0eaccde56b0c083/6501c88eb0eaccde56b0c143_social-3.png"
+                        alt="YouTube"
+                        width="22"
+                        height="22"
+                        loading="lazy"
+                      />
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </footer>
     </div>
   </body>
 </html>

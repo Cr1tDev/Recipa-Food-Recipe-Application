@@ -1,5 +1,6 @@
 import featuredView from './views/featuredView.js';
 import blogCardView from './views/blogCardView.js';
+import feedView from './views/feedView.js';
 import view from './views/view.js';
 import { model } from './model.js';
 
@@ -18,8 +19,11 @@ const controlLoadRandomRecipes = async function () {
 export const init = function () {
   view.initGetElement();
   view.renderCategories(model.state.categories);
+
+  // Load Web Views
   featuredView.render();
   blogCardView.render();
+  feedView.render();
 
   // Load homepage recipes
   controlLoadRandomRecipes();
