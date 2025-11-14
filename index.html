@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Explore delicious and nutritious recipes, cooking tips, and culinary adventures."
+    />
+    <meta name="ivanarre" content="Recipee" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Open Graph -->
+    <meta
+      property="og:title"
+      content="Recipee - Nutritious Recipes & Culinary Inspiration"
+    />
+    <meta
+      property="og:description"
+      content="Discover delicious recipes and join our culinary community"
+    />
+    <meta property="og:type" content="website" />
+
+    <link rel="stylesheet" href="./src/css/style.css" />
+    <script type="module" src="./src/js/script.js"></script>
+
+    <title>Recipe - Discover Nutritious Recipes & Culinary Inspiration</title>
+  </head>
+  <body>
+    <div class="app">
+      <!-- Navigation bar -->
+      <div class="navbar">
+        <div class="container-wrapper">
+          <div class="nav-container">
+            <div class="brand-logo">
+              <img src="./src/assets/recipa_logo.png" alt="recipa logo" />
+            </div>
+
+            <!-- Hamburger Button -->
+            <button class="hamburger" aria-label="Toggle menu">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+
+            <!-- Navigation Links -->
+            <div class="navigation-links">
+              <ul>
+                <li class="link-item"><a href="/">Home</a></li>
+                <li class="link-item"><a href="#">About</a></li>
+                <li class="link-item">
+                  <a href="#">Recipes</a>
+                </li>
+                <li class="link-item">
+                  <a href="#">Categories</a>
+                </li>
+                <li class="link-item">
+                  <a href="#">News</a>
+                </li>
+              </ul>
+            </div>
+            <!-- Contact button now inside navigation-links -->
+            <div class="contact-container">
+              <custom-button
+                text="Contact Me"
+                color="green"
+                href="./pages/contact.html"
+              ></custom-button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section class="hero">
+        <div class="container-wrapper">
+          <div class="hero-container">
+            <div class="hero-container__heading">
+              <custom-tag
+                tagname="Welcome to recipa"
+                position="right"
+                color="green"
+              ></custom-tag>
+              <h1 class="hero-heading">
+                Come, let's savor the goodness of my
+                <custom-heading tagname="nutritious."></custom-heading>
+              </h1>
+              <p class="hero-description">
+                Discover the art of cooking nutritious and mouthwatering dishes
+                with me.
+              </p>
+              <custom-button
+                text="All Recipes"
+                color="green"
+                href="#"
+              ></custom-button>
+            </div>
+            <div class="hero-container__image">
+              <img
+                class="hero-img"
+                src="./src/assets/hero-img.webp"
+                alt="cooking"
+              />
+              <a
+                href="#"
+                class="hero__play-button"
+                aria-label="Play introduction video"
+                data-link=""
+              >
+                <img
+                  class="hero__play-icon"
+                  src="./src/assets/hero-play-filled.svg"
+                  alt="play logo"
+                  aria-hidden="true"
+                  width="17"
+                  height="17"
+                  loading="lazy"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Featured -->
+      <section class="featured">
+        <div class="container-wrapper">
+          <div class="featured-container">
+            <custom-tag
+              tagname="featured on"
+              position="right"
+              color="green"
+            ></custom-tag>
+            <div class="featured-logos"></div>
+          </div>
+        </div>
+      </section>
+      <!-- Category -->
+      <section class="category">
+        <div class="container-wrapper">
+          <div class="category-container">
+            <custom-tag
+              tagname="Browse recipes by category"
+              position="center"
+              color="green"
+            ></custom-tag>
+            <h2 class="category-heading">
+              Recipes <custom-heading tagname="categories."></custom-heading>
+            </h2>
+          </div>
+          <div class="category-content">
+            <div class="categories"></div>
+          </div>
+        </div>
+      </section>
+      <!-- Recipes -->
+      <section class="recipes">
+        <div class="container-wrapper">
+          <div class="recipes-container">
+            <h2 class="recipes-header">
+              Latest <custom-heading tagname="recipes."></custom-heading>
+            </h2>
+            <custom-button
+              text="All Recipes"
+              color="green"
+              href="#"
+            ></custom-button>
+          </div>
+          <div class="recipes-content">
+            <div class="recipe-tabs">
+              <button
+                class="tabs__button tabs__button--active"
+                role="tab"
+                aria-selected="true"
+                aria-controls="latest-recipes"
+              >
+                Latest Recipes
+              </button>
+              <button
+                class="tabs__button"
+                aria-selected="false"
+                aria-controls="featured-recipes"
+              >
+                <img
+                  class="tabs__icon"
+                  src="./src/assets/bookmark-icon.png"
+                  alt="Featured Icon"
+                />
+                Featured Recipes
+              </button>
+            </div>
+            <div class="recipe-container__card">
+              <!-- Add recipes dynamicly -->
+              <div class="container__card"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
