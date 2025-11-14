@@ -1,10 +1,11 @@
+import textSpark from 'url:../../assets/text-effect.svg';
+
 class CustomHeading extends HTMLElement {
   constructor() {
     super();
-    this.root = this.attachShadow({ mode: 'open' }); // ✅ use open
+    this.root = this.attachShadow({ mode: 'open' });
   }
 
-  // ✅ Correct lifecycle method name
   connectedCallback() {
     this.render();
   }
@@ -35,7 +36,7 @@ class CustomHeading extends HTMLElement {
         }
         .heading__highlight {
             color: var(--color-green);
-            background-image: url('./src/assets/text-effect.svg');
+            background-image: url('${textSpark}');
             background-position: 100% 0;
             background-repeat: no-repeat;
             background-size: 5rem;

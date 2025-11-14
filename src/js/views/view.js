@@ -1,9 +1,13 @@
+import spinnerIcon from 'url:../../assets/spinnerIcon.svg';
+
 class View {
   _categoriesContainer = null;
+  _recipesContainer = null;
 
   // Initialization
   initGetElement() {
     this._categoriesContainer = document.querySelector('.categories');
+    this._recipesContainer = document.querySelector('.container__card');
   }
 
   // Render Category Elements
@@ -46,6 +50,192 @@ class View {
       .join('');
 
     this._categoriesContainer.innerHTML = markup;
+  }
+
+  // Render spinner to be DOM
+  renderLoader() {
+    const markup = `
+      <div class="spinner">
+        <svg class="spinner-icon">
+          <use href="${spinnerIcon}#icon-loader"></use>
+        </svg>
+      </div>
+    `;
+    if (!this._recipesContainer) return;
+    this._recipesContainer.innerHTML = '';
+    this._recipesContainer.innerHTML = markup;
+  }
+
+  // Render list recipe to the DOM
+  renderRecipes(recipes, container = this._recipesContainer) {
+    if (!container) return;
+
+    if (!recipes || recipes.length === 0) {
+      this.renderError();
+      return;
+    }
+
+    const recipesELe = recipes
+      .map(recipe => this._generateRecipeCard(recipe))
+      .join('');
+
+    container.innerHTML = '';
+    container.innerHTML = recipesELe;
+  }
+
+  // Generate recipe card
+  _generateRecipeCard(recipe) {
+    const getCategoryInfo = () => {
+      if (recipe.category?.includes('breakfast'))
+        return {
+          name: 'Breakfast',
+          icon: 'https://cdn.prod.website-files.com/6501c88eb0eaccde56b0c089/6502e2d1ff8db94df5297188_icons8-bread-240.png',
+          url: '/recipe-categories/breakfast',
+        };
+      if (
+        recipe.category?.includes('lunch') ||
+        recipe.category?.includes('main course')
+      )
+        return {
+          name: 'Lunch',
+          icon: 'https://cdn.prod.website-files.com/6501c88eb0eaccde56b0c089/6502e2f3fbcadab05d250a8b_icons8-pizza-240.png',
+          url: '/recipe-categories/lunch',
+        };
+      if (recipe.category?.includes('dessert'))
+        return {
+          name: 'Dessert',
+          icon: 'https://cdn.prod.website-files.com/6501c88eb0eaccde56b0c089/6502e33c6ae3d69baf126f5a_icons8-cake-240.png',
+          url: '/recipe-categories/dessert',
+        };
+      if (
+        recipe.category?.includes('side') ||
+        recipe.category?.includes('drink')
+      )
+        return {
+          name: 'Side',
+          icon: 'https://cdn.prod.website-files.com/6501c88eb0eaccde56b0c089/6502e314a55677b935bd3113_icons8-the-toast-240.png',
+          url: '/recipe-categories/drink',
+        };
+      return {
+        name: 'Lunch',
+        icon: 'https://cdn.prod.website-files.com/6501c88eb0eaccde56b0c089/6502e2f3fbcadab05d250a8b_icons8-pizza-240.png',
+        url: '/recipes',
+      };
+    };
+
+    const category = getCategoryInfo();
+    const readyInMinutes = recipe.readyInMinutes || 30;
+    const servings = recipe.servings || 4;
+    const difficulty =
+      readyInMinutes <= 20 ? 'Easy' : readyInMinutes <= 45 ? 'Medium' : 'Hard';
+    const title = recipe.title || 'Delicious Recipe';
+    const description = recipe.summary
+      ? recipe.summary.replace(/<[^>]*>/g, '').substring(0, 100) + '...'
+      : "A delicious and nutritious recipe you'll love.";
+
+    return `
+      <article class="recipe-card" data-recipe-id="${recipe.id}">
+        <div class="recipe-card__badge">
+          <a href="${category.url}" class="badge">
+            <img
+              class="badge__icon"
+              src="${category.icon}"
+              alt=""
+              width="27"
+              height="27"
+            />
+            <span class="badge__text">${category.name}</span>
+          </a>
+        </div>
+
+        <a
+          href="/recipe/${recipe.id}"
+          class="recipe-card__link"
+        >
+          <div class="recipe-card__image-wrapper">
+            <img
+              class="recipe-card__image"
+              src="${recipe.image}"
+              alt="${title}"
+              loading="lazy"
+            />
+
+            <div class="recipe-card__info">
+              <div class="recipe-meta">
+                <img
+                  class="recipe-meta__icon"
+                  src="https://cdn.prod.website-files.com/6501c88eb0eaccde56b0c083/650300cba3d8f08049ff6aed_schedule_FILL0_wght300_GRAD0_opsz24.svg"
+                  alt=""
+                  width="27"
+                  height="27"
+                />
+                <span class="recipe-meta__text">${readyInMinutes} Min</span>
+              </div>
+
+              <div class="recipe-meta">
+                <img
+                  class="recipe-meta__icon"
+                  src="https://cdn.prod.website-files.com/6501c88eb0eaccde56b0c083/65030090282cb8dc8d551130_account_circle_FILL0_wght300_GRAD0_opsz24.svg"
+                  alt=""
+                  width="27"
+                  height="27"
+                />
+                <span class="recipe-meta__text"
+                  >${servings} Servings</span
+                >
+              </div>
+
+              <div class="recipe-meta">
+                <img
+                  class="recipe-meta__icon"
+                  src="https://cdn.prod.website-files.com/6501c88eb0eaccde56b0c083/65030140cda3526d9edcd88b_signal_cellular_alt_FILL0_wght300_GRAD0_opsz24.svg"
+                  alt=""
+                  width="27"
+                  height="27"
+                />
+                <span class="recipe-meta__text">${difficulty}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="recipe-card__content">
+            <h3 class="recipe-card__title">${title}</h3>
+            <p class="recipe-card__description">
+              ${description}
+            </p>
+            <div class="link-underline">
+              <span class="link-underline__text"
+                >View Recipe</span
+              >
+              <span class="link-underline__line"></span>
+            </div>
+          </div>
+        </a>
+      </article>
+
+      
+    `;
+  }
+
+  // Render Error
+  renderError() {
+    const message = 'Failed to load recipes. Please try again!';
+    const markup = `
+      <div class="error-message">
+        <img src="https://cdn.prod.website-files.com/6501c88eb0eaccde56b0c083/6501c88eb0eaccde56b0c146_icon-menu.svg" alt="" class="error-message__icon" />
+        <h3 class="error-message__title">Oops!</h3>
+        <p class="error-message__text">${message}</p>
+        <button class="button error-message__button" onclick="location.reload()">
+          <span class="button__content">
+            <span class="button__text">Try Again</span>
+          </span>
+        </button>
+      </div>
+    `;
+
+    if (!this._recipesContainer) return;
+    this._recipesContainer.innerHTML = '';
+    this._recipesContainer.innerHTML = markup;
   }
 }
 

@@ -1,0 +1,23 @@
+{
+  "name": "recipa-food-recipe-application",
+  "version": "1.0.0",
+  "description": "Food recipe",
+  "homepage": "https://github.com/Cr1tDev/Recipa-Food-Recipe-Application#readme",
+  "bugs": {
+    "url": "https://github.com/Cr1tDev/Recipa-Food-Recipe-Application/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cr1tDev/Recipa-Food-Recipe-Application.git"
+  },
+  "license": "ISC",
+  "author": "Ivanarre",
+  "type": "commonjs",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "devDependencies": {
+    "parcel": "^2.16.1"
+  }
+}
