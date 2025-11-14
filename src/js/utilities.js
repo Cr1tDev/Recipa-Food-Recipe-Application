@@ -21,7 +21,6 @@ export const buildIngredients = meal => {
     }
   }
 
-  console.log(ingredients);
   return ingredients;
 };
 

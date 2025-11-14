@@ -215,6 +215,13 @@ img {
   object-fit: cover;
   width: 520px;
   min-height: 520px;
+  filter: blur(10px);
+  opacity: 0.9;
+}
+
+.hero-img.loaded {
+  filter: blur(0);
+  opacity: 1;
 }
 
 .hero__play-button {
@@ -684,17 +691,17 @@ img {
 .about-img {
   object-fit: cover;
   object-position: center;
-  /* filter: blur(10px);
-  opacity: 0.9; */
+  filter: blur(10px);
+  opacity: 0.9;
   width: 100%;
   height: 100%;
   display: block;
 }
 
-/* .about-img.loaded {
+.about-img.loaded {
   filter: blur();
   opacity: 1;
-} */
+}
 
 /* Insight styling */
 .insight {
